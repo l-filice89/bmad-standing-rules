@@ -1,9 +1,9 @@
 # bmad-standing-rules
 
-Portable standing rules for `bmad-dev-auto`, harvested from the press-start
+Portable standing rules for `bmad-dev-auto`, harvested from a real production
 project's 13 epic retrospectives (2026-07) in a retro-of-retros. Sixteen rules,
 each born from a real incident; the incident stays in the wording because it is
-the rationale.
+the rationale. The collection is living — new projects feed new rules in.
 
 ## Install into a project
 
@@ -11,11 +11,9 @@ Copy the file — do **not** clone this repo into `_bmad/custom/` (that folder
 also holds per-project `config.toml` files):
 
 ```sh
-gh api repos/l-filice89/bmad-standing-rules/contents/bmad-dev-auto.toml \
-  -H "Accept: application/vnd.github.raw" > _bmad/custom/bmad-dev-auto.toml
+curl -fsSL https://raw.githubusercontent.com/l-filice89/bmad-standing-rules/main/bmad-dev-auto.toml \
+  -o _bmad/custom/bmad-dev-auto.toml
 ```
-
-(the repo is private, so plain `curl` on the raw URL won't work)
 
 or from a local clone:
 
