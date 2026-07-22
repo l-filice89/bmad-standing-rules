@@ -1,30 +1,43 @@
 # bmad-standing-rules
 
-Portable standing rules for `bmad-dev-auto`, harvested from a real production
+Portable standing rules for BMAD dev flows, harvested from a real production
 project's epic retrospectives in a retro-of-retros. Sixteen rules, each born
 from a real incident; the incident stays in the wording because it is the
 rationale. The collection is living — new projects feed new rules in.
 
+## Layout
+
+Rules live once, in two markdown files; thin per-skill TOML stubs include them
+via the `file:` mechanism of `persistent_facts`:
+
+| File | Contents | Loaded by |
+|------|----------|-----------|
+| `standing-rules-core.md` | 12 flow-agnostic engineering rules | all three flows |
+| `standing-rules-epic-process.md` | 4 rules tied to epic/story machinery | dev-auto, dev-story |
+| `bmad-dev-auto.toml` | include stub | `bmad-dev-auto` |
+| `bmad-dev-story.toml` | include stub | `bmad-dev-story` |
+| `bmad-quick-dev.toml` | include stub (core only) | `bmad-quick-dev` |
+
 ## Install into a project
 
-Copy the file — do **not** clone this repo into `_bmad/custom/` (that folder
-also holds per-project `config.toml` files):
+Copy all five files into `<project>/_bmad/custom/` — do **not** clone the repo
+into that folder (it also holds per-project `config.toml` files):
 
 ```sh
-curl -fsSL https://raw.githubusercontent.com/l-filice89/bmad-standing-rules/main/bmad-dev-auto.toml \
-  -o _bmad/custom/bmad-dev-auto.toml
+cd <project>/_bmad/custom
+for f in standing-rules-core.md standing-rules-epic-process.md \
+         bmad-dev-auto.toml bmad-dev-story.toml bmad-quick-dev.toml; do
+  curl -fsSLO https://raw.githubusercontent.com/l-filice89/bmad-standing-rules/main/$f
+done
 ```
 
-or from a local clone:
-
-```sh
-cp ~/Development/bmad-standing-rules/bmad-dev-auto.toml <project>/_bmad/custom/
-```
-
-If the project already has a `_bmad/custom/bmad-dev-auto.toml` with its own
-facts, merge the `persistent_facts` arrays by hand.
+If the project already has one of the per-skill TOMLs with its own facts, keep
+that file and just add the two `file:` entries to its `persistent_facts` array
+(arrays append on merge, so the stubs and project-specific facts coexist).
 
 ## What's inside
+
+Core — any flow:
 
 | Rule | One-liner |
 |------|-----------|
@@ -36,22 +49,28 @@ facts, merge the `persistent_facts` arrays by hand.
 | RESOURCE-BUDGET | Budget claims enumerate every consumer, with arithmetic written out |
 | TEST-THE-BYPASS | Guards get tests for the way through, not just the refusal |
 | CAPABILITY-IS-NOT-AN-IDENTIFIER | Server-published values prove nothing; mint capabilities |
-| FOLLOW-UP-REVIEW CONTRACT | Self-stamped stories need an independent pass before merge |
-| FOLLOW-UP-REVIEW AUTO-FORCE | A HIGH finding forces that pass, non-declinable |
-| DELEGATED-WORK-CARRIES-AN-AC | Cross-story delegation becomes an AC in the receiving story |
 | UI-MOCK-GATE | UI-touching specs carry a signed-off placement mock before code |
 | EXTERNAL-RISK-FLAG | Third-party touches carry a signed-off ToS/credential/legal risk flag |
 | WCAG NUDGE | Interactive widgets name their ARIA pattern in the spec |
-| POST-EPIC OPERATOR SWEEP | Pre-merge pass over the epic as a running system: ledger, time, budgets |
 | PRESERVE-VS-CLEAR | Partial updates rule absent-vs-clear per field; 200-[] ruled per endpoint |
+
+Epic process — dev-auto and dev-story only (they need merge gates, review
+stamps, cross-story delegation, and a deferred-work ledger to bind to):
+
+| Rule | One-liner |
+|------|-----------|
+| FOLLOW-UP-REVIEW CONTRACT | Self-stamped stories need an independent pass before merge |
+| FOLLOW-UP-REVIEW AUTO-FORCE | A HIGH finding forces that pass, non-declinable |
+| DELEGATED-WORK-CARRIES-AN-AC | Cross-story delegation becomes an AC in the receiving story |
+| POST-EPIC OPERATOR SWEEP | Pre-merge pass over the epic as a running system: ledger, time, budgets |
 
 Not included: the bmad-loop foreground-only orchestration constraint — it is a
 workaround for a specific orchestrator and belongs only in projects that use it.
 
 ## Enforcement model
 
-These are prompt-level facts injected into every `bmad-dev-auto` session — not
+These are prompt-level facts injected into every dev session — not
 deterministic gates. They hold because they are worded as BLOCK/finding checks
-at named workflow steps (step-02 spec gate, step-03 implementation, step-04
-review), which the agent treats as a checklist. Observed miss rate across 8
-epics in the origin project: zero.
+at named workflow moments (spec time, implementation, review), which the agent
+treats as a checklist. Observed miss rate across 8 epics in the origin
+project: zero.
