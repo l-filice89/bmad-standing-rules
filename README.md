@@ -52,9 +52,18 @@ cp bmad-standing-rules/standing-rules-*.md bmad-standing-rules/*.toml <project>/
 
 (PowerShell: same with `copy` instead of `cp`.)
 
-If the project already has one of the per-skill TOMLs with its own facts, keep
-that file and just add the two `file:` entries to its `persistent_facts` array
-(arrays append on merge, so the stubs and project-specific facts coexist).
+**Careful:** each download replaces any same-named file already in
+`_bmad/custom/`. If the project already has one of the per-skill TOMLs with its
+own `persistent_facts`, do NOT download that stub — instead open the existing
+file and add the two `file:` lines to its array:
+
+```toml
+persistent_facts = [
+  "file:{project-root}/_bmad/custom/standing-rules-core.md",
+  "file:{project-root}/_bmad/custom/standing-rules-epic-process.md",
+  "your existing project-specific facts stay here...",
+]
+```
 
 ## What's inside
 
