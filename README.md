@@ -11,9 +11,11 @@ Copy the file — do **not** clone this repo into `_bmad/custom/` (that folder
 also holds per-project `config.toml` files):
 
 ```sh
-curl -fsSL https://raw.githubusercontent.com/l-filice89/bmad-standing-rules/main/bmad-dev-auto.toml \
-  -o _bmad/custom/bmad-dev-auto.toml
+gh api repos/l-filice89/bmad-standing-rules/contents/bmad-dev-auto.toml \
+  -H "Accept: application/vnd.github.raw" > _bmad/custom/bmad-dev-auto.toml
 ```
+
+(the repo is private, so plain `curl` on the raw URL won't work)
 
 or from a local clone:
 
