@@ -1,9 +1,9 @@
 # bmad-standing-rules
 
 Portable standing rules for `bmad-dev-auto`, harvested from a real production
-project's 13 epic retrospectives (2026-07) in a retro-of-retros. Sixteen rules,
-each born from a real incident; the incident stays in the wording because it is
-the rationale. The collection is living — new projects feed new rules in.
+project's epic retrospectives in a retro-of-retros. Sixteen rules, each born
+from a real incident; the incident stays in the wording because it is the
+rationale. The collection is living — new projects feed new rules in.
 
 ## Install into a project
 
