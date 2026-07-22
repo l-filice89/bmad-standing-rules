@@ -111,6 +111,10 @@ cp -r bmad-standing-rules/skills/bmad-retro-of-retros <project>/.claude/skills/
 
 Then say "retro of retros" in a session inside the project.
 
+Contributions land as PRs against `main` — the branch is protected (no direct
+pushes, maintainer merge is the last word). The skill does this automatically;
+manual contributions follow the same route.
+
 ## Enforcement model
 
 These are prompt-level facts injected into every dev session — not
