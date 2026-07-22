@@ -56,7 +56,11 @@ the shared standing-rules collection; project-specific rules stay behind.
 4. **Present for rulings** — a table: rule, origin scar, classification,
    proposed generalized wording (or the diff against an existing rule).
    The user rules on each: adopt / rework / drop. Do not write until ruled.
-5. **Feed the repo via PR — never push main**: append adopted rules to the
+5. **Feed the repo via PR — never push main**: first pull the collection's
+   latest `main` AND scan open harvest PRs (`gh pr list`) for rules
+   overlapping your candidates — re-run the step-1 dedupe against anything
+   found and note remaining near-misses in your PR body so the maintainer
+   sees the collision. Then append adopted rules to the
    matching markdown file in the clone, update the README's rule table, commit
    on a branch (`harvest/<project-slug>`), push, and open a PR against `main`
    with `gh pr create` (fork first via `gh repo fork --remote` if the user
