@@ -103,13 +103,17 @@ workaround for a specific orchestrator and belongs only in projects that use it.
 this repo was born from: at project end it collects retro-born rules from
 `_bmad/custom/*.toml` and the epic retros, classifies them (core /
 epic-process / project-specific), generalizes the travelers, gets your ruling
-on each, and commits the survivors here. Install it per project:
+on each, and opens a PR here with the survivors. Install it per project:
 
 ```sh
 cp -r bmad-standing-rules/skills/bmad-retro-of-retros <project>/.claude/skills/
 ```
 
 Then say "retro of retros" in a session inside the project.
+
+Contributions land as PRs against `main` — the branch is protected (no direct
+pushes, maintainer merge is the last word). The skill does this automatically;
+manual contributions follow the same route.
 
 ## Enforcement model
 
