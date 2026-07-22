@@ -103,7 +103,7 @@ workaround for a specific orchestrator and belongs only in projects that use it.
 this repo was born from: at project end it collects retro-born rules from
 `_bmad/custom/*.toml` and the epic retros, classifies them (core /
 epic-process / project-specific), generalizes the travelers, gets your ruling
-on each, and commits the survivors here. Install it per project:
+on each, and opens a PR here with the survivors. Install it per project:
 
 ```sh
 cp -r bmad-standing-rules/skills/bmad-retro-of-retros <project>/.claude/skills/
