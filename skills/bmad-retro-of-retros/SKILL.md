@@ -25,9 +25,17 @@ the shared standing-rules collection; project-specific rules stay behind.
 
 ## Procedure
 
-1. **Harvest**: list every fact/rule from inputs 1–2 that is not already in
-   the collection. For each, find its origin incident in the retros — the scar
-   is the rationale and must survive into the generalized wording.
+1. **Harvest the DELTA only**: list every fact/rule from inputs 1–2 that is
+   not already in the collection — and "already" is judged by SUBSTANCE, not
+   name: a project rule that restates an existing collection rule in different
+   words is not a candidate (silently skip it), and one that partially
+   overlaps is a candidate only for EXTENDING the existing rule (step 3),
+   never for a new entry. Before classifying anything, check each candidate
+   against every collection rule and record which existing rule it is closest
+   to. A harvest that proposes an already-collected rule wastes the
+   maintainer's ruling time — the whole point is the delta. For each true
+   candidate, find its origin incident in the retros — the scar is the
+   rationale and must survive into the generalized wording.
 2. **Classify** each candidate:
    - **core** — flow-agnostic engineering rule, holds in any project
    - **epic-process** — holds anywhere epic/story machinery exists (merge
