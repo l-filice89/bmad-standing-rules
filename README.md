@@ -21,7 +21,9 @@ via the `file:` mechanism of `persistent_facts`:
 ## Install into a project
 
 Copy all five files into `<project>/_bmad/custom/` — do **not** clone the repo
-into that folder (it also holds per-project `config.toml` files):
+into that folder (it also holds per-project `config.toml` files).
+
+macOS / Linux / Windows Git Bash:
 
 ```sh
 cd <project>/_bmad/custom
@@ -30,6 +32,25 @@ for f in standing-rules-core.md standing-rules-epic-process.md \
   curl -fsSLO https://raw.githubusercontent.com/l-filice89/bmad-standing-rules/main/$f
 done
 ```
+
+Windows PowerShell:
+
+```powershell
+cd <project>\_bmad\custom
+'standing-rules-core.md','standing-rules-epic-process.md',
+'bmad-dev-auto.toml','bmad-dev-story.toml','bmad-quick-dev.toml' | ForEach-Object {
+  Invoke-WebRequest "https://raw.githubusercontent.com/l-filice89/bmad-standing-rules/main/$_" -OutFile $_
+}
+```
+
+Or, on any OS, clone somewhere else and copy:
+
+```sh
+git clone https://github.com/l-filice89/bmad-standing-rules
+cp bmad-standing-rules/standing-rules-*.md bmad-standing-rules/*.toml <project>/_bmad/custom/
+```
+
+(PowerShell: same with `copy` instead of `cp`.)
 
 If the project already has one of the per-skill TOMLs with its own facts, keep
 that file and just add the two `file:` entries to its `persistent_facts` array
