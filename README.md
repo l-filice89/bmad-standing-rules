@@ -1,7 +1,7 @@
 # bmad-standing-rules
 
 Portable standing rules for BMAD dev flows, harvested from a real production
-project's epic retrospectives in a retro-of-retros. Sixteen rules, each born
+project's epic retrospectives in a retro-of-retros. Eighteen rules, each born
 from a real incident; the incident stays in the wording because it is the
 rationale. The collection is living — new projects feed new rules in.
 
@@ -12,8 +12,8 @@ via the `file:` mechanism of `persistent_facts`:
 
 | File | Contents | Loaded by |
 |------|----------|-----------|
-| `standing-rules-core.md` | 12 flow-agnostic engineering rules | all three flows |
-| `standing-rules-epic-process.md` | 4 rules tied to epic/story machinery | dev-auto, dev-story |
+| `standing-rules-core.md` | 13 flow-agnostic engineering rules | all three flows |
+| `standing-rules-epic-process.md` | 5 rules tied to epic/story machinery | dev-auto, dev-story |
 | `bmad-dev-auto.toml` | include stub | `bmad-dev-auto` |
 | `bmad-dev-story.toml` | include stub | `bmad-dev-story` |
 | `bmad-quick-dev.toml` | include stub (core only) | `bmad-quick-dev` |
@@ -83,6 +83,7 @@ Core — any flow:
 | EXTERNAL-RISK-FLAG | Third-party touches carry a signed-off ToS/credential/legal risk flag |
 | WCAG NUDGE | Interactive widgets name their ARIA pattern in the spec |
 | PRESERVE-VS-CLEAR | Partial updates rule absent-vs-clear per field; 200-[] ruled per endpoint |
+| STALE-READ-VALIDATOR | New read model → enumerate writers; test staleness per writer category |
 
 Epic process — dev-auto and dev-story only (they need merge gates, review
 stamps, cross-story delegation, and a deferred-work ledger to bind to):
@@ -93,6 +94,7 @@ stamps, cross-story delegation, and a deferred-work ledger to bind to):
 | FOLLOW-UP-REVIEW AUTO-FORCE | A HIGH finding forces that pass, non-declinable |
 | DELEGATED-WORK-CARRIES-AN-AC | Cross-story delegation becomes an AC in the receiving story |
 | POST-EPIC OPERATOR SWEEP | Pre-merge pass over the epic as a running system: ledger, time, budgets |
+| OVERSIZED-STORY | Oversized at planning → split, or accept with forced independent review |
 
 Not included: the bmad-loop foreground-only orchestration constraint — it is a
 workaround for a specific orchestrator and belongs only in projects that use it.
